@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 21:32:03 by vaperron          #+#    #+#             */
-/*   Updated: 2026/10/29 21:53:45 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/10/29 23:41:05 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int ft_abs_val(int num)
 {
-    if (num < 0)
-        num = -num;
-    return (num);
+	if (num < 0)
+		num = -num;
+	return (num);
 }

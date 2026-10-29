@@ -6,62 +6,60 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 00:39:47 by vaperron          #+#    #+#             */
-/*   Updated: 2026/10/29 21:54:05 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/10/30 00:49:34 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	caster(char c, va_list list, int character_ct)
+static int	caster(char c, va_list list)
 {
+	int count;
+	unsigned int num;
+
+	count = 0;
 	char	*substring;
 	if (c == 'c')
-		substring = va_arg(list, char *);
+		count = count + ft_print_char(va_arg(list, int));
 	else if (c == 's')
 		substring = va_arg(list, char *);
 	else if (c == 'p')
-	{
-		write(1, "0x", 2);
-		substring = ft_hextoa(va_arg(list, unsigned long));
-	}
-	else if (c == 'd')
-		substring = ft_itoa(va_arg(list, int));
-	else if (c == 'i')
+		substring = ft_voidtoa(va_arg(list, unsigned long));
+	else if (c == 'd' || c == 'i')
 		substring = ft_itoa(va_arg(list, int));
 	else if (c == 'u')
-		substring = ft_itoa(ft_abs_val(va_arg(list, int)));
+		substring = ft_utoa(va_arg(list, unsigned int));
 	else if (c == 'x')
 		substring = ft_hextoa(va_arg(list, unsigned long));
 	else if (c == 'X')
 		substring = ft_toupper_string(ft_hextoa(va_arg(list, unsigned long)));
 	else if (c == '%')
 			substring = "%";
-	character_ct = character_ct + ft_terminal_write(substring, '\0', 0);
+	if (c != 'c')
+		count = count + ft_terminal_write(substring, '\0', 0);
 	if (c == 'p' || c == 'd' || c == 'i' || c == 'u' || c == 'x' || c == 'X')
 		free(substring);
+	return (count);
 }
 
 int	ft_printf(char const *string, ...)
 {
-	int		i;
 	int		arg_ct;
 	int		character_ct;
+	int		string_pos;
 	va_list	list;
 
-	i = 0;
 	character_ct = 0;
+	string_pos = 0;
 	arg_ct = ft_arg_number(string);
 	va_start(list, string);
-	while(string[character_ct])
+	while(string[string_pos])
 	{
-		ft_terminal_write((char *)string, '%', character_ct);
-		if (string[character_ct] == '%')
-			character_ct = character_ct + 2;
-		if (i < arg_ct)
-		{
-			caster(string[character_ct - 1], list, character_ct );
-			i++;
-		}
+		string_pos = ft_terminal_write(string, '%', string_pos);
+		if (string[string_pos] == '%')
+			string_pos = string_pos + 2;
+		if (0 < arg_ct--)
+			character_ct = character_ct + caster(string[string_pos - 1], list);
 	}
 	va_end(list);
 	return(character_ct);

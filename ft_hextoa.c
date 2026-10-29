@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 19:53:09 by vaperron          #+#    #+#             */
-/*   Updated: 2026/10/29 21:54:00 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/10/30 00:22:23 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 static int hex_size(unsigned long num)
 {
 	int		size;
-	int		num_cpy;
+	unsigned long		num_cpy;
 
 	size = 0;
 	num_cpy = num;
@@ -29,25 +29,28 @@ static int hex_size(unsigned long num)
 char	*ft_hextoa(unsigned long num)
 {
 	int		i;
+	int		j;
 	char	*dictionary;
 	char	*result;
-
+	
+	if (!num)
+		result = "(nil)\0";
 	i = hex_size(num);
+	j = i;
 	dictionary = "0123456789abcdef";
 	result = malloc((i + 1) * sizeof(char));
 	if (!result)
 		return(NULL);
-	if (!num)
-		result = "(nil)\0";
+	
 	else
 	{
 		while (i > 0)
 		{
-			result[i] = dictionary[num % 16];
+			result[i - 1] = dictionary[num % 16];
 			num = num / 16;
 			i--;
 		}
-		result[16] = '\0';
+		result[j] = '\0';
 	}
 	return (result);
 }
