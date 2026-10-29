@@ -13,7 +13,12 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 
-int		arg_number(char const *string);
+int		ft_arg_number(char const *string);
+int		ft_terminal_write(char *string, char stopper_char, int current_pos);
+int     ft_abs_val(int num);
 void	*ft_calloc(size_t nmemb, size_t size);
-char	*hextoa(unsigned int long long num);
+char	*ft_toupper_string(char *string);
+char	*ft_hextoa(unsigned long num);
+char	*ft_itoa(int n);

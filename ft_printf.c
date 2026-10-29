@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-char	*caster(char c, va_list list)
+void	caster(char c, va_list list, int character_ct)
 {
 	char	*substring;
 	if (c == 'c')
@@ -20,66 +20,58 @@ char	*caster(char c, va_list list)
 	else if (c == 's')
 		substring = va_arg(list, char *);
 	else if (c == 'p')
-		substring = hextoa(va_arg(list, void *));
-	/*else if (c == 'd')
-		write
+	{
+		write(1, "0x", 2);
+		substring = ft_hextoa(va_arg(list, unsigned long));
+	}
+	else if (c == 'd')
+		substring = ft_itoa(va_arg(list, int));
 	else if (c == 'i')
-		write
+		substring = ft_itoa(va_arg(list, int));
 	else if (c == 'u')
-		write
+		substring = ft_itoa(ft_abs_val(va_arg(list, int)));
 	else if (c == 'x')
-		write
-	else if (c == 'x')
-		write
+		substring = ft_hextoa(va_arg(list, unsigned long));
+	else if (c == 'X')
+		substring = ft_toupper_string(ft_hextoa(va_arg(list, unsigned long)));
 	else if (c == '%')
-		write*/
-	return (substring);
+			substring = "%";
+	character_ct = character_ct + ft_terminal_write(substring, '\0', 0);
+	if (c == 'p' || c == 'd' || c == 'i' || c == 'u' || c == 'x' || c == 'X')
+		free(substring);
 }
 
 int	ft_printf(char const *string, ...)
 {
 	int		i;
-	int		j;
-	int		k;
-	int		l;
-	char	*substring;
+	int		arg_ct;
+	int		character_ct;
 	va_list	list;
 
 	i = 0;
-	l = 0;
-	k = arg_number(string);
+	character_ct = 0;
+	arg_ct = ft_arg_number(string);
 	va_start(list, string);
-	while(string[l])
+	while(string[character_ct])
 	{
-		j = 0;
-		while(string[l])
+		ft_terminal_write((char *)string, '%', character_ct);
+		if (string[character_ct] == '%')
+			character_ct = character_ct + 2;
+		if (i < arg_ct)
 		{
-			if (string[l] == '%')
-			break;
-			write(1,&string[l], 1);
-			l++;
-		}
-		if (string[l] == '%')
-			l = l + 2;
-		if (i < k)
-		{
-			substring = caster(string[l - 1], list);
-			while(substring[j])
-			{
-				write(1,&substring[j], 1);
-				j++;
-			}
+			caster(string[character_ct - 1], list, character_ct );
 			i++;
 		}
 	}
 	va_end(list);
+	return(character_ct);
 }
 
 int main(void)
 {
-	char *test = " test1 ";
+	unsigned int hex = 4247582346;
 	int num[1] = {42};
-	//ft_printf("hola%s%s%p%sholaaaaaaa\n", " mundo", test, &num, " test2 ");
-	printf("hola%d%p%smundo\n", 356.4652467, &num, " test2 ");
+	ft_printf("hola %c %s %p %d %i %u %x %X %% mundo\n", 'c', "test", &num, 1000, 1000, -1000, hex, hex);
+	printf("hola %c %s %p %d %i %u %x %X %% mundo\n", 'c', "test", &num, 1000, 1000, -1000, hex, hex);
 	return (0);
 }
