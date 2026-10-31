@@ -14,27 +14,27 @@
 
 static int	ascii_ins(long int n, int size, int exp, char *number)
 {
-    int		neg;
-    int		ct;
+	int		neg;
+	int		ct;
 
-    ct = 0;
-    neg = 0;
-    if (n < 0)
-        neg = 1;
-    if (neg == 1)
-    {
-        number[0] = '-';
-        n = -n;
-        ct++;
-    }
-    while (ct < (size + neg))
-    {
-        number[ct] = (n / exp) + '0';
-        n = n - ((n / exp) * exp);
-        exp = exp / 10;
-        ct++;
-    }
-    return (ct);
+	ct = 0;
+	neg = 0;
+	if (n < 0)
+		neg = 1;
+	if (neg == 1)
+	{
+		number[0] = '-';
+		n = -n;
+		ct++;
+	}
+	while (ct < (size + neg))
+	{
+		number[ct] = (n / exp) + '0';
+		n = n - ((n / exp) * exp);
+		exp = exp / 10;
+	ct++;
+	}
+	return (ct);
 }
 
 char	*ft_utoa(unsigned int n)

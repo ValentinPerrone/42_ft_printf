@@ -18,7 +18,7 @@ int	ft_terminal_write(char const *string, char stopper_char, int character_ct)
 	{
 		if (string[character_ct] == stopper_char)
 		{
-            return (character_ct);
+			return (character_ct);
 		}
 		write(1, &string[character_ct], 1);
 		character_ct ++;

@@ -21,7 +21,7 @@ char	*ft_toupper_string(char *string)
 	{
 		if (string[i] >= 'a' && string[i] <= 'z')
 			string[i] = string[i] - ('a' - 'A');
-        i++;
+		i++;
 	}
 	return (string);
 }
