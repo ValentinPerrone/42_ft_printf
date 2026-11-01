@@ -1,0 +1,26 @@
+{
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "C: build all files with strict flags",
+			"command": "gcc",
+			"args": [
+				"-g",
+//				"-Wall", 
+//				"-Wextra", 
+//				"-Werror",
+				"${workspaceFolder}/*.c",
+				"-lbsd",
+				"-o",
+				"${workspaceFolder}/program"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": ["$gcc"],
+			"detail": "Generated task by user for C compilation."
+		}
+	],
+        "version": "2.0.0"
+}

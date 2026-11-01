@@ -6,11 +6,12 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 19:53:09 by vaperron          #+#    #+#             */
-/*   Updated: 2026/10/30 00:22:23 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/01 02:45:05 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
 static int hex_size(unsigned long num)
 {
 	int		size;
