@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 02:43:50 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/01 03:22:09 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/02 22:55:52 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	left_justification(int padding, char *string, int string_pos, va_list list)
 			write(1, " ", 1);
 		}
 	}
-	return(padding);
+	return(string_pos + 1);
 }
 
 int	ft_flag_checker(const char *string, int string_pos, va_list list)
@@ -39,7 +39,7 @@ int	ft_flag_checker(const char *string, int string_pos, va_list list)
 
 	c = string[string_pos + 1];
 	if (c == '-')
-		left_justification(ft_atoi(&string[string_pos + 1]), string, string_pos, list);
+		string_pos = left_justification(ft_atoi(&string[string_pos + 1]), string, string_pos, list);
 	else if (c == '0')
 		write(1, "h", 1);//do something
 	else if (c == '.')
@@ -50,4 +50,7 @@ int	ft_flag_checker(const char *string, int string_pos, va_list list)
 		write(1, "h", 1);//do something
 	else if (c == '+')
 		write(1, "h", 1);//do something
+	else
+		ft_caster(c, list);
+	return(string_pos);
 }

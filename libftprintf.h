@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 00:36:52 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/01 02:52:13 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/02 23:48:47 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 
 int		ft_terminal_write(char const *string, char stopper_char, int character_ct);
-int		ft_flag_checker(char *string, int string_pos, va_list list);
+int		ft_flag_checker(const char *string, int string_pos, va_list list);
 int		ft_arg_number(char const *string);
 int		ft_caster(char c, va_list list);
 int		ft_atoi(const char *nptr);
@@ -30,3 +30,4 @@ char	*ft_hextoa(unsigned long num);
 char	*ft_utoa(unsigned int n);
 char	*ft_itoa(int n);
 void	*ft_calloc(size_t nmemb, size_t size);
+void	ft_bzero(void *s, size_t n);
