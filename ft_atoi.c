@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 21:17:53 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/01 02:55:05 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/03 22:22:31 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	val = 0;
 	neg = 1;
-	while (ft_isspace(nptr[i]) == 1)
+	while (ft_isspace(nptr[i]) == 1 && ft_isdigit != 1)
 		i++;
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{

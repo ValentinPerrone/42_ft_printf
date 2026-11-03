@@ -6,20 +6,18 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 02:10:24 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/03 17:14:45 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/03 19:20:18 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_caster(char c, int *counter, va_list list)
+char	*ft_caster(char c, va_list list)
 {
-	int		count;
 	char	*substring;
 
-	count = 0;
 	if (c == 'c')
-		count = ft_print_char(va_arg(list, int));
+		substring = va_arg(list, char *);
 	else if (c == 's')
 		substring = va_arg(list, char *);
 	else if (c == 'p')
@@ -34,9 +32,13 @@ int	ft_caster(char c, int *counter, va_list list)
 		substring = ft_toupper_string(ft_hextoa(va_arg(list, unsigned long)));
 	else if (c == '%')
 		substring = "%";
-	if (c != 'c')
-		count = ft_terminal_write(substring, '\0', counter, 0);
-	if (c == 'p' || c == 'd' || c == 'i' || c == 'u' || c == 'x' || c == 'X')
-		free(substring);
-	return (count);
+	return (substring);
+}
+
+int	ft_printer(char *string, int *counter)
+{
+	int		count;
+
+	count = ft_terminal_write(string, '\0', counter, 0);
+	return(count);
 }
