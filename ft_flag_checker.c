@@ -6,40 +6,41 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 02:43:50 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/02 22:55:52 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/03 17:36:27 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	left_justification(int padding, char *string, int string_pos, va_list list)
+static int	left_justification(int padding, const char *string, int *counter, va_list list)
 {
-	int characters_ct;
 	int	i;
+	int	character_ct;
 
 	i = 0;
-	padding = -padding;
-	while (ft_isalpha(string[string_pos]) == 0)
-		string_pos++;
-	characters_ct = ft_caster(string[string_pos], list);
-	if (padding > characters_ct)
+	while (ft_isalpha(string[counter[0]]) == 0)
+		counter[0]++;
+	character_ct = ft_caster(string[counter[0]], counter, list);
+	counter[0]++;
+	if (padding > character_ct)
 	{
-		padding = padding - characters_ct;
+		counter[1] = counter[1] + padding;
+		padding = padding - character_ct;
 		while(i++ < padding)
-		{
 			write(1, " ", 1);
-		}
 	}
-	return(string_pos + 1);
+	else
+		counter[1] = counter[1] + character_ct;
+	return(counter[1]);
 }
 
-int	ft_flag_checker(const char *string, int string_pos, va_list list)
+int	ft_flag_checker(const char *string, int *counter, va_list list)
 {
 	char    c;
 
-	c = string[string_pos + 1];
+	c = string[counter[0] + 1];
 	if (c == '-')
-		string_pos = left_justification(ft_atoi(&string[string_pos + 1]), string, string_pos, list);
+		left_justification(-ft_atoi(&string[counter[0] + 1]), string, counter, list);
 	else if (c == '0')
 		write(1, "h", 1);//do something
 	else if (c == '.')
@@ -51,6 +52,9 @@ int	ft_flag_checker(const char *string, int string_pos, va_list list)
 	else if (c == '+')
 		write(1, "h", 1);//do something
 	else
-		ft_caster(c, list);
-	return(string_pos);
+	{
+		ft_caster(c, counter, list);
+		counter[0] = counter[0] + 2;
+	}
+	return(counter[1]);
 }

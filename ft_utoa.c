@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:10:22 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/01 02:45:09 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/03 14:23:01 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ char	*ft_utoa(unsigned int n)
 {
 	long int	n_long;
 	long int	exp;
-	int		neg;
 	int		size;
 	char	*number;
 
@@ -53,7 +52,7 @@ char	*ft_utoa(unsigned int n)
 		exp = exp * 10;
 		size++;
 	}
-	number = malloc((size + neg + 1) * sizeof(char));
+	number = malloc((size + 1) * sizeof(char));
 	if (!number)
 		return (NULL);
 	number[ascii_ins(n_long, size, exp, number)] = '\0';
