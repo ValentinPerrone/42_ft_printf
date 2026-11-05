@@ -1,7 +1,7 @@
 FILENAME := libftprintf.a
 FLAGS := -Wall -Wextra -Werror -I.
-SRCS := ft_printf.c
-HEADER := libftprintf.h
+SRCS := ft_abs_val.c ft_arg_number.c ft_atoi.c ft_bzero.c ft_caster.c ft_flag_checker.c ft_hextoa.c ft_isalpha.c ft_isdigit.c ft_itoa.c ft_print_char.c ft_printf.c ft_strchr.c ft_strlen.c ft_terminal_write.c ft_toupper_string.c ft_utoa.c ft_voidtoa.c
+HEADER := ft_printf.h
 OBJ := $(SRCS:.c=.o)
 GREEN := \033[32m
 YELLOW := \033[33m

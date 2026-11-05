@@ -6,11 +6,11 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:10:22 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/03 14:23:01 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/04 20:00:48 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	ascii_ins(long int n, int size, int exp, char *number)
 {

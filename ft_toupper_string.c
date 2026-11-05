@@ -6,11 +6,11 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 16:23:46 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/01 02:32:57 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/04 20:00:53 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 char	*ft_toupper_string(char *string)
 {

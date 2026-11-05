@@ -1,0 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/23 00:36:52 by vaperron          #+#    #+#             */
+/*   Updated: 2026/11/05 18:18:48 by vaperron         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+// ======================== other headers ======================== //
+#include <stdio.h>
+#include <stdarg.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stddef.h>
+
+// ====================== created functions ====================== //
+int		ft_terminal_write(char const *string, char stopper_char, int *counter, int is_main_str);
+int		ft_flag_checker(const char *string, int *counter, va_list list);
+int		ft_printer(char *string, int *counter, const char *main_string);
+int		ft_arg_number(const char *string);
+int		ft_atoi(const char *nptr);
+int		ft_abs_val(int num);
+int		ft_isalpha(int i);
+int		ft_isdigit(int i);
+size_t	ft_strlen(const char *s);
+char	*ft_caster(char c, va_list list);
+char	*ft_toupper_string(char *string);
+char	*ft_strchr(const char *s, int c);
+char	*ft_voidtoa(unsigned long num);
+char	*ft_hextoa(long long num, char c);
+char	*ft_utoa(unsigned int n);
+char	*ft_itoa(int n);
+void	*ft_calloc(size_t nmemb, size_t size);
+void	ft_bzero(void *s, size_t n);

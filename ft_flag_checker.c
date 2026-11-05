@@ -6,11 +6,30 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 02:43:50 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/03 22:32:40 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/05 17:12:00 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
+
+static int	hash_flag(const char *string, int *counter, va_list list)
+{
+	char	*arg_string;
+	
+	while (ft_isalpha(string[counter[0]]) == 0)
+		counter[0]++;
+	if(string[counter[0]] == 'x')
+		write(1, "0x", 2);
+	else if(string[counter[0]] == 'X')
+		write(1, "0X", 2);
+	counter[1] = counter[1] + 2;
+	arg_string = ft_caster(string[counter[0]], list);
+	ft_printer(arg_string, counter, string);
+	if (ft_strchr("cpdiuxX", string[counter[0]]) != NULL)
+			free(arg_string);
+	counter[0]++;
+	return(counter[1]);
+}
 
 static int	zero_padding(size_t padding, const char *string, int *counter, va_list list)
 {
@@ -30,12 +49,13 @@ static int	zero_padding(size_t padding, const char *string, int *counter, va_lis
 	}
 	else
 		counter[1] = counter[1] + ft_strlen(arg_string);
-	ft_printer(arg_string, counter);
-	if (ft_strchr("pdiuxX", string[counter[0]]) != NULL)
+	ft_printer(arg_string, counter, string);
+	if (ft_strchr("cpdiuxX", string[counter[0]]) != NULL)
 			free(arg_string);
 	counter[0]++;
 	return(counter[1]);
 }
+
 static int	left_justification(int padding, const char *string, int *counter, va_list list)
 {
 	int	i;
@@ -46,8 +66,8 @@ static int	left_justification(int padding, const char *string, int *counter, va_
 	while (ft_isalpha(string[counter[0]]) == 0)
 		counter[0]++;
 	arg_string = ft_caster(string[counter[0]], list);
-	character_ct = ft_printer(arg_string, counter);
-	if (ft_strchr("pdiuxX", string[counter[0]]) != NULL)
+	character_ct = ft_printer(arg_string, counter, string);
+	if (ft_strchr("cpdiuxX", string[counter[0]]) != NULL)
 			free(arg_string);
 	counter[0]++;
 	if (padding > character_ct)
@@ -62,18 +82,18 @@ static int	left_justification(int padding, const char *string, int *counter, va_
 	return(counter[1]);
 }
 
-int	point_flag(char *string, int *counter)
+static int	flag_override(const char *string, int *counter, char character)
 {
 	int	i;
 
 	i = 0;
 	while(ft_isalpha(string[counter[0] + i]) == 0)
 	{
-		if(string[counter[0] + i] == '.')
+		if(string[counter[0] + i] == character)
 			break;
 		i++;
 	}
-	if(string[counter[0] + i] == '.')
+	if(string[counter[0] + i] == character)
 	{
 		counter[0] = counter[0] + (i - 1);
 		return(1);
@@ -86,22 +106,22 @@ int	ft_flag_checker(const char *string, int *counter, va_list list)
 {
 	char *arg_string;
 	if (string[counter[0] + 1] == '#')
+		hash_flag(string, counter, list);
+	else if (string[counter[0] + 1] == ' ' && flag_override(string, counter, '+') == 0)
 		write(1, "h", 1);//do something
 	else if (string[counter[0] + 1] == '+')
 		write(1, "h", 1);//do something
-	else if (string[counter[0] + 1] == ' ')
-		write(1, "h", 1);//do something
 	else if (string[counter[0] + 1] == '-')
 		left_justification(ft_atoi(&string[counter[0] + 2]), string, counter, list);
-	else if (string[counter[0] + 1] == '0' && point_flag(string, counter) == 0)
+	else if (string[counter[0] + 1] == '0' && flag_override(string, counter, '.') == 0)
 		zero_padding(ft_atoi(&string[counter[0] + 2]), string, counter, list);
 	else if (string[counter[0] + 1] == '.')
 		zero_padding(ft_atoi(&string[counter[0] + 2]), string, counter, list);
 	else
 	{
 		arg_string = ft_caster(string[counter[0] + 1], list);
-		ft_printer(arg_string, counter);
-	if (ft_strchr("pdiuxX", string[counter[0] + 1]) != NULL)
+		ft_printer(arg_string, counter, string);
+	if (ft_strchr("cpdiuxX", string[counter[0] + 1]) != NULL)
 			free(arg_string);
 		counter[0] = counter[0] + 2;
 	}

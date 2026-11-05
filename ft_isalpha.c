@@ -6,9 +6,11 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 11:49:18 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/01 02:45:07 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/04 20:07:33 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 int	ft_isalpha(int i)
 {

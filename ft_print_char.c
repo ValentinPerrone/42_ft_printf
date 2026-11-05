@@ -6,11 +6,11 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 22:48:15 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/01 02:33:00 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/04 20:01:11 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_print_char(char c)
 {
