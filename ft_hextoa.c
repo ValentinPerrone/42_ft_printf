@@ -6,13 +6,13 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 19:53:09 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/05 18:24:17 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/06 23:09:25 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int hex_size(unsigned long long num, char c)
+static int hex_size(long long num, char c)
 {
 	int		size;
 	unsigned long		num_cpy;
@@ -30,7 +30,7 @@ static int hex_size(unsigned long long num, char c)
 	return (size);
 }
 
-char	*ft_hextoa(unsigned long long num, char c)
+char	*ft_hextoa(long long num, char c)
 {
 	int		i;
 	int		j;

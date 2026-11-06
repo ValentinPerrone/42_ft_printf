@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 02:10:24 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/05 17:33:00 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/06 22:49:07 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,8 @@ char	*ft_caster(char c, va_list list)
 		substring = ft_hextoa(va_arg(list, unsigned long), c);
 	else if (c == 'X')
 		substring = ft_toupper_string(ft_hextoa(va_arg(list, unsigned long), c));
-	else if (c == '%')
-		substring = "%";
 	else
-		substring = "(nil)";
+		substring = "%";
 	return (substring);
 }
 
