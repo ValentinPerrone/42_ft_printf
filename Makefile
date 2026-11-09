@@ -10,9 +10,9 @@ WHITE := \033[0m
 all: $(FILENAME)
 $(FILENAME): $(OBJ) 
 	@ar -scr $@ -o $^
-	@echo "$(GREEN)\n================================================================$(WHITE)"
-	@echo "$(GREEN)|                $(YELLOW)$(FILENAME) compiled successfully!$(GREEN)                |$(WHITE)"
-	@echo "$(GREEN)================================================================\n$(WHITE)"
+	@echo "$(GREEN)\n=====================================================================$(WHITE)"
+	@echo "$(GREEN)|                $(YELLOW)$(FILENAME) compiled successfully!$(GREEN)               |$(WHITE)"
+	@echo "$(GREEN)=====================================================================\n$(WHITE)"
 %.o: %.c
 	@printf "\tCompiling:\t%-18s -> %s\n" "$<" "$@"
 	@cc $(FLAGS) -c $^ -o $@
@@ -30,9 +30,9 @@ fclean: clean
 			rm -f "$$FILENAME"; \
 		fi; \
 	done
-	@echo "$(GREEN)\n================================================================$(WHITE)"
-	@echo "$(GREEN)|             $(YELLOW).o and .a files removed successfully!$(GREEN)            |$(WHITE)"
-	@echo "$(GREEN)================================================================\n$(WHITE)"
+	@echo "$(GREEN)\n=====================================================================$(WHITE)"
+	@echo "$(GREEN)|                $(YELLOW).o and .a files removed successfully!$(GREEN)              |$(WHITE)"
+	@echo "$(GREEN)=====================================================================\n$(WHITE)"
 re: fclean all
 
 .PHONY : all clean fclean re

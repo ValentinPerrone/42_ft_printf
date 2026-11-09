@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 00:36:52 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/06 23:09:29 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/09 18:23:03 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int		ft_abs_val(int num);
 int		ft_isalpha(int i);
 int		ft_isdigit(int i);
 size_t	ft_strlen(const char *s);
+char	*ft_voidtoa(unsigned long long num, char c);
 char	*ft_caster(char c, va_list list);
 char	*ft_toupper_string(char *string);
 char	*ft_strchr(const char *s, int c);
-char	*ft_voidtoa(unsigned long num);
-char	*ft_hextoa(long long num, char c);
+char	*ft_hextoa(unsigned long long num);
 char	*ft_utoa(unsigned int n);
 char	*ft_itoa(int n);
 void	*ft_calloc(size_t nmemb, size_t size);
