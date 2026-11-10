@@ -8,6 +8,7 @@ YELLOW := \033[33m
 WHITE := \033[0m
 
 all: $(FILENAME)
+bonus: $(FILENAME)
 $(FILENAME): $(OBJ) 
 	@ar -scr $@ -o $^
 	@echo "$(GREEN)\n=====================================================================$(WHITE)"

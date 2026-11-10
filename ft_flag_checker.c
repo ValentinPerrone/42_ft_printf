@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 02:43:50 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/09 20:22:38 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/10 20:02:48 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,16 @@ static int	left_justification(int padding, const char *string, int *counter, va_
 	if (ft_strchr("cpdiuxX", string[counter[0]]) != NULL)
 			free(arg_string);
 	counter[0]++;
-	if (padding > character_ct)
+	if (padding >= character_ct)
 	{
 		padding = padding - character_ct;
-		counter[1] = counter[1] + padding;
+		if (padding != 0)
+			counter[1] = counter[1] + padding;
 		while(i++ < padding)
 			write(1, " ", 1);
 	}
-	else
-		counter[1] = counter[1] + character_ct;
+//	else
+//		counter[1] = counter[1] + character_ct;
 	return(counter[1]);
 }
 
@@ -111,8 +112,8 @@ int	ft_flag_checker(const char *string, int *counter, va_list list)
 		write(1, "h", 1);//do something
 	else if (string[counter[0] + 1] == '+')
 		write(1, "h", 1);//do something
-	else if (string[counter[0] + 1] == '-')
-		left_justification(ft_atoi(&string[counter[0] + 2]), string, counter, list);
+	else if (string[counter[0] + 1] == '-' || ft_isdigit(string[counter[0] + 1]) == 1)
+		left_justification(ft_atoi(&string[counter[0] + 1]), string, counter, list);
 	else if (string[counter[0] + 1] == '0' && flag_override(string, counter, '.') == 0)
 		zero_padding(ft_atoi(&string[counter[0] + 2]), string, counter, list);
 	else if (string[counter[0] + 1] == '.')

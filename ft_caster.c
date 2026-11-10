@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 02:10:24 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/09 20:22:40 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/10 20:13:14 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ char	*c_assigner(va_list list)
 	substring[0] = (char)va_arg(list, int);
 	substring[1] = '\0';
 	return (substring);
-	
 }
 
 char	*ft_caster(char c, va_list list)
@@ -47,31 +46,34 @@ char	*ft_caster(char c, va_list list)
 	return (substring);
 }
 
-static void null_check(char *string, int *counter)
+static int null_check(char *string, int *counter)
 {
 	if(ft_strlen(string) == 0)
 	{
 		write(1, "(nil)", 5);
-			counter[1] = counter[1] + 5;
+		counter[1] = counter[1] + 5;
+		return(5);	
 	}
 	else
 	{
 		write(1, "0x", 2);
-			counter[1] = counter[1] + 2;
+		counter[1] = counter[1] + 2;
+		return(2);
 	}
 }
 
 int	ft_printer(char *string, int *counter, const char *main_string)
 {
 	int		count;
-	
-	if(main_string[counter[0] + 1] == 'p')
-		null_check(string, counter);
-	if(main_string[counter[0] + 1] == 'c')
+
+	count = 0;
+	if(main_string[counter[0]] == 'p')
+		count = null_check(string, counter);
+	if(main_string[counter[0]] == 'c' && string[0] == '\0')
 	{
 		count = 1;
-		counter[1] = counter[1] + count;
 		write(1, &string[0], 1);
+		counter[1]++;
 	}
 	else
 	{
@@ -82,7 +84,7 @@ int	ft_printer(char *string, int *counter, const char *main_string)
 			counter[1] = counter[1] + count;
 		}
 		else
-			count = ft_terminal_write(string, '\0', counter, 0);
+			count = count + ft_terminal_write(string, '\0', counter, 0);
 	}
 	return(count);
 }
