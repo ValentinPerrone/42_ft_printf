@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 00:39:47 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/10 20:13:25 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/11 19:25:47 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ int main(void)
 //	int mine2 = ft_printf("_%-2c_\n", 0);
 //	int original2 = printf("_%-2c_\n", 0);
 //	printf("mine: %d original: %d\n", mine2, original2);
-//	int mine3 = ft_printf("_%-3c_\n", '1');
-//	int original3 = printf("_%-3c_\n", '1');
+//	int mine3 = ft_printf(".%02d.", 11);
+//	int original3 = printf(".%02d.", 11);
 //	printf("mine: %d original: %d\n", mine3, original3);
-	int mine = ft_printf(".%-2p.\n", 1);
-	int original = printf(".%-2p.\n", 1);
+	int mine = ft_printf(".%#x.\n", 0);
+	int original = printf(".%#x.\n", 0);
 	printf("mine: %d original: %d\n", mine, original);
 	return (0);
 }
