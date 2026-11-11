@@ -6,16 +6,17 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 00:36:52 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/09 20:22:25 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/11 23:15:28 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // ======================== other headers ======================== //
-#include <stdio.h>
 #include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include <stddef.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include "helper_functions/helper_functions.h"
+#include "libft_functions/libft_functions.h"
 
 // ====================== created functions ====================== //
 int		ft_terminal_write(char const *string, char stopper_char, int *counter, int is_main_str);
