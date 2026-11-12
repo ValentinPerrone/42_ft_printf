@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 02:43:50 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/12 18:09:36 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/12 18:56:54 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,30 @@ static int	not_0(char arg)
 		return (0);
 }
 
-int	ft_flag_checker(const char *s, int *c, va_list list)
+int	ft_flag_checker(const char *str, int *cntr, va_list list)
 {
-	char	*arg_s;
+	char	*arg_str;
 
-	if (s[c[0] + 1] == '#')
-		ft_hash_flag(s, c, list);
-	else if (s[c[0] + 1] == ' ' && ft_flag_override(s, c, '+') == 0)
-		ft_sp_al(ft_atoi(&s[c[0] + 1]), s, c, list);
-	else if (s[c[0] + 1] == '+')
-		ft_pl_al(ft_atoi(&s[c[0] + 1]), s, c, list);
-	else if (s[c[0] + 1] == '-' || not_0(s[c[0] + 1]) == 1)
-		ft_l_just(ft_atoi(&s[c[0] + 1]), s, c, list);
-	else if (s[c[0] + 1] == '0' && ft_flag_override(s, c, '.') == 0)
-		ft_0_padd(ft_atoi(&s[c[0] + 2]), s, c, list);
-	else if (s[c[0] + 1] == '.')
-		ft_dot(ft_atoi(&s[c[0] + 2]), s, c, list);
+	if (str[cntr[0] + 1] == '#')
+		ft_hash_flag(str, cntr, list);
+	else if (str[cntr[0] + 1] == ' ' && ft_flag_override(str, cntr, '+') == 0)
+		ft_sp_al(ft_atoi(&str[cntr[0] + 1]), str, cntr, list);
+	else if (str[cntr[0] + 1] == '+')
+		ft_pl_al(ft_atoi(&str[cntr[0] + 1]), str, cntr, list);
+	else if (str[cntr[0] + 1] == '-' || not_0(str[cntr[0] + 1]) == 1)
+		ft_l_just(ft_atoi(&str[cntr[0] + 1]), str, cntr, list);
+	else if (str[cntr[0] + 1] == '0' && ft_flag_override(str, cntr, '.') == 0)
+		ft_0_padd(ft_atoi(&str[cntr[0] + 2]), str, cntr, list);
+	else if (str[cntr[0] + 1] == '.')
+		ft_dot(ft_atoi(&str[cntr[0] + 2]), str, cntr, list);
 	else
 	{
-		c[0]++;
-		arg_s = ft_caster(s[c[0]], list);
-		ft_printer(arg_s, c, s);
-		if (ft_strchr("cpdiuxX", s[c[0]]) != NULL)
-			free(arg_s);
-		c[0]++;
+		cntr[0]++;
+		arg_str = ft_caster(str[cntr[0]], list);
+		ft_printer(arg_str, cntr, str);
+		if (ft_strchr("cpdiuxX", str[cntr[0]]) != NULL)
+			free(arg_str);
+		cntr[0]++;
 	}
-	return (c[1]);
+	return (str[1]);
 }

@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 00:39:47 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/12 18:08:38 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/12 18:48:43 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,4 @@ int	ft_printf(char const *string, ...)
 	}
 	va_end(list);
 	return (counter[1]);
-}
-/**/
-int main(void)
-{
-	int mine = ft_printf(".%.s.\n", "-");
-	int orig = printf(".%.s.\n", "-");
-	printf("mine: %d original: %d", mine, orig);
 }

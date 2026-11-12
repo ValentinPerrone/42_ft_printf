@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 22:45:39 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/12 17:45:11 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/12 18:47:12 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_hash_flag(const char *string, int *counter, va_list list);
 int		ft_null_check(char *string, int *counter);
 char	*ft_caster(char c, va_list list);
 char	*ft_c_assigner(va_list list);
-void	ft_dot(size_t precision, const char *string, int *counter, va_list list);
+void	ft_dot(size_t padding, const char *string, int *counter, va_list list);
 void	ft_pl_al(size_t padding, const char *str, int *cntr, va_list list);
 void	ft_sp_al(size_t padding, const char *str, int *cntr, va_list list);
 void	ft_0_pr(size_t pad, const char *str, int *cntr, char *arg_s);
