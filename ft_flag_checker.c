@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 02:43:50 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/12 18:56:54 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/12 19:45:51 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_flag_checker(const char *str, int *cntr, va_list list)
 	if (str[cntr[0] + 1] == '#')
 		ft_hash_flag(str, cntr, list);
 	else if (str[cntr[0] + 1] == ' ' && ft_flag_override(str, cntr, '+') == 0)
-		ft_sp_al(ft_atoi(&str[cntr[0] + 1]), str, cntr, list);
+		ft_sp_al(ft_atoi(&str[cntr[0] + 2]), str, cntr, list);
 	else if (str[cntr[0] + 1] == '+')
 		ft_pl_al(ft_atoi(&str[cntr[0] + 1]), str, cntr, list);
 	else if (str[cntr[0] + 1] == '-' || not_0(str[cntr[0] + 1]) == 1)
