@@ -6,23 +6,23 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 19:53:09 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/11 22:43:44 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/12 15:52:49 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_functions.h"
 
-static int hex_size(unsigned long long num, char c)
+static int	hex_size(unsigned long long num, char c)
 {
-	int		size;
-	unsigned long		num_cpy;
+	int				size;
+	unsigned long	num_cpy;
 
-	if(c == 'p' || num != 0)
+	if (c == 'p' || num != 0)
 		size = 0;
 	else
 		size = 1;
 	num_cpy = num;
-	while (num_cpy > 0)// && size < 8
+	while (num_cpy > 0)
 	{
 		num_cpy = num_cpy / 16;
 		size++;
@@ -36,7 +36,7 @@ char	*ft_voidtoa(unsigned long long num, char c)
 	int		j;
 	char	*dictionary;
 	char	*result;
-	
+
 	if (!num)
 		result = "(nil)\0";
 	i = hex_size(num, c);
@@ -44,7 +44,7 @@ char	*ft_voidtoa(unsigned long long num, char c)
 	dictionary = "0123456789abcdef";
 	result = malloc((i + 1) * sizeof(char));
 	if (!result)
-		return(NULL);
+		return (NULL);
 	else
 	{
 		while (i > 0)

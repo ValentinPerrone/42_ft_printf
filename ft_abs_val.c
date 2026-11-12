@@ -6,13 +6,13 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 21:32:03 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/11 22:13:41 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/12 15:05:57 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_abs_val(int num)
+int	ft_abs_val(int num)
 {
 	if (num < 0)
 		num = -num;

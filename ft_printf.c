@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 00:39:47 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/11 22:13:21 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/12 17:06:37 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,19 @@ int	ft_printf(char const *string, ...)
 	arg_ct = ft_arg_number(string);
 	va_start(list, string);
 	ft_bzero(counter, (sizeof(int) * 2));
-	while(string[counter[0]])
+	while (string[counter[0]])
 	{
-		ft_terminal_write(string, '%', counter, 1);
+		ft_twrite(string, '%', counter, 1);
 		if (1 <= arg_ct--)
 			ft_flag_checker(string, counter, list);
 	}
 	va_end(list);
-	return(counter[1]);
+	return (counter[1]);
+}
+
+int main(void)
+{
+	int mine = ft_printf(".%c.%c.%c.", '0', 0, '1');
+	int orig = printf(".%c.%c.%c.", '0', 0, '1');
+	printf("mine: %d original: %d", mine, orig);
 }

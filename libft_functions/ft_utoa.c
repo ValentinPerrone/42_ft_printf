@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:10:22 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/11 22:43:41 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/12 15:49:52 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ascii_ins(long int n, int size, int exp, char *number)
 		number[ct] = (n / exp) + '0';
 		n = n - ((n / exp) * exp);
 		exp = exp / 10;
-	ct++;
+		ct++;
 	}
 	return (ct);
 }
@@ -41,8 +41,8 @@ char	*ft_utoa(unsigned int n)
 {
 	long int	n_long;
 	long int	exp;
-	int		size;
-	char	*number;
+	int			size;
+	char		*number;
 
 	exp = 1;
 	size = 1;

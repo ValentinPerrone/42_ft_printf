@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 01:19:54 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/11 22:13:47 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/12 15:26:11 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	ft_arg_number(char const *string)
 		if (string[i] == '%' && string[i + 1])
 		{
 			arg_number++;
-			if (string[i+1] == '%')
+			if (string[i + 1] == '%')
 				i++;
-		}	
+		}
 		i++;
 	}
 	return (arg_number);

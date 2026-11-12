@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_zero_printing.c                                 :+:      :+:    :+:   */
+/*   ft_0_pr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 22:23:02 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/11 22:26:08 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/12 17:13:24 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "helper_functions.h"
 
-void	ft_zero_printing(const char *string, char *arg_string, int *counter, size_t i, size_t padding)
+void	ft_0_pr(size_t pad, const char *str, int *cntr, char *arg_s)
 {
-	if (arg_string[0] == '-')
+	size_t	i;
+
+	i = 0;
+	if (arg_s[0] == '-')
 	{
 		write(1, "-", 1);
-		counter[1]++;
+		cntr[1]++;
 	}
-	if (padding > ft_strlen(arg_string))
+	if (pad > ft_strlen(arg_s))
 	{
-		padding = padding - ft_strlen(arg_string);
-		counter[1] = counter[1] + padding;
-		while(i++ < padding)
+		pad = pad - ft_strlen(arg_s);
+		cntr[1] = cntr[1] + pad;
+		while (i++ < pad)
 			write(1, "0", 1);
 	}
-	if (arg_string[0] == '-')
-		ft_printer(arg_string + 1, counter, string);
+	if (arg_s[0] == '-')
+		ft_printer(arg_s + 1, cntr, str);
 	else
-		ft_printer(arg_string, counter, string);
+		ft_printer(arg_s, cntr, str);
 }
