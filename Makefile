@@ -14,7 +14,7 @@ $(FILENAME): $(OBJ)
 	@echo "$(GREEN)\n=====================================================================$(WHITE)"
 	@echo "$(GREEN)|                $(YELLOW)$(FILENAME) compiled successfully!$(GREEN)               |$(WHITE)"
 	@echo "$(GREEN)=====================================================================\n$(WHITE)"
-%.o: %.c
+%.o: %.c Makefile
 	@printf "\tCompiling:\t%-18s -> %s\n" "$<" "$@"
 	@cc $(FLAGS) -c $^ -o $@
 clean:
