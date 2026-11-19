@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_null_check_bonus.c                              :+:      :+:    :+:   */
+/*   ft_null_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 22:17:27 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/14 02:11:01 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/17 21:40:05 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
 int	ft_null_check(char *string, int *counter)
 {

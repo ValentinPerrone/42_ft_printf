@@ -6,11 +6,12 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 02:10:24 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/16 20:19:21 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/19 16:18:07 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_functions/libft_functions.h"
+#include "ft_printf_bonus/ft_printf_bonus.h"
 #include "ft_printf.h"
 
 char	*ft_caster(char c, va_list list)
